@@ -1,0 +1,49 @@
+﻿
+<link href="docs/examples/carousel/carousel.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 style="font-size: 70px">JOB<font style="color: rgba(227, 114, 34, 0.9); text-shadow: 0.5px 0.5px #6c7b83;">Fairé</font></h1>
+                            <p>JOBFairé is a match making system that allows employers to meet suitable job seekers during a 'speed interview' process based on the jobseeker soft skills and technical skills with regards to the vacancy requirements.</p>
+                            <p><a id="lblSignUpOverall" class="btn  btn-primary" href="jobseeker_registration_step_1.aspx" role="button">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>The Joburg Centre for Software Engineering (JCSE)</h1>
+                            <p>The Joburg Centre for Software Engineering (JCSE) is a three way partnership between government, academia and industry. Based at Wits University, the JCSE is multifaceted with various programmes and facilities positioning it as a focal point of a software development industry for South Africa and the rest of the continent.</p>
+                            <p><a class="btn  btn-primary" href="http://www.jcse.org.za/" role="button">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>WITS University Tshimologong Precinct</h1>
+                            <p>WITS University Tshimologong Precinct will create a space for collaboration, training, creative content development. There will be activities such as App Factories, short courses, CoachLab@JCSE as well as a space for forums and events and enterprise development support.</p>
+                            <p><a class="btn  btn-primary" href="http://openwits.co.za/" role="button">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+
+    </section>
+}

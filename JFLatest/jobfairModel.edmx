@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="jobfairModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="create_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" />
+          <Property Name="userType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employer">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="contactNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="userType" Type="tinyint" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="event">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="startTime" Type="datetime" Precision="0" />
+          <Property Name="endTime" Type="datetime" Precision="0" />
+          <Property Name="venue" Type="varchar" MaxLength="45" />
+          <Property Name="timestamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="jobseeker">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="sofSkill1" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="softSkill2" Type="varchar" MaxLength="255" />
+          <Property Name="softSkill3" Type="varchar" MaxLength="255" />
+          <Property Name="highestQualification" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="technicaSkill1" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="technicalSkill2" Type="varchar" MaxLength="255" />
+          <Property Name="technicalSkill3" Type="varchar" MaxLength="255" />
+          <Property Name="contactNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="inNo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="firstLanguage" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="secondLanguage" Type="varchar" MaxLength="255" />
+          <Property Name="disability" Type="bool" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="255" />
+          <Property Name="race" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="userType" Type="tinyint" Nullable="false" />
+          <Property Name="driversLicense" Type="bool" Nullable="false" />
+          <Property Name="criminalRecord" Type="bool" Nullable="false" />
+          <Property Name="workPermit" Type="bool" />
+          <Property Name="salaryMin" Type="int" />
+          <Property Name="salaryMax" Type="int" />
+          <Property Name="preferredPosition" Type="varchar" MaxLength="255" />
+          <Property Name="timestamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="jobseekerskill">
+          <Key>
+            <PropertyRef Name="ownerEmail" />
+            <PropertyRef Name="skillId" />
+          </Key>
+          <Property Name="ownerEmail" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="skillId" Type="int" Nullable="false" />
+          <Property Name="yearsExperience" Type="int" Nullable="false" />
+          <Property Name="createTime" Type="timestamp" Precision="0" />
+        </EntityType>
+        <EntityType Name="match">
+          <Key>
+            <PropertyRef Name="employerEmail" />
+            <PropertyRef Name="jobseekerEmail" />
+            <PropertyRef Name="eventId" />
+          </Key>
+          <Property Name="employerEmail" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="jobseekerEmail" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="eventId" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="skill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="type" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vacancy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ownerEmail" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="lowestQualification" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="softSkill1" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="softSkill2" Type="varchar" MaxLength="255" />
+          <Property Name="softSkill3" Type="varchar" MaxLength="255" />
+          <Property Name="technicalSkill1" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="technicalSkill2" Type="varchar" MaxLength="255" />
+          <Property Name="technicalSkill3" Type="varchar" MaxLength="255" />
+          <Property Name="location" Type="varchar" MaxLength="255" />
+          <Property Name="salaryMin" Type="int" />
+          <Property Name="salaryMax" Type="int" />
+          <Property Name="driversLicense" Type="bool" />
+          <Property Name="criminalRecord" Type="bool" />
+          <Property Name="gender" Type="varchar" MaxLength="1" />
+          <Property Name="disability" Type="bool" />
+          <Property Name="race" Type="varchar" MaxLength="255" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="language" Type="varchar" MaxLength="255" />
+          <Property Name="timestamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="workhistory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ownerEmail" Type="varchar" MaxLength="254" />
+          <Property Name="position" Type="varchar" MaxLength="255" />
+          <Property Name="startDate" Type="date" Nullable="false" />
+          <Property Name="endDate" Type="date" Nullable="false" />
+          <Property Name="employer" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" Precision="0" />
+          <Property Name="WorkHistorycol" Type="varchar" MaxLength="45" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="fk_jsSkills_jobseeker">
+          <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="1" />
+          <End Role="jobseekerskill" Type="Self.jobseekerskill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobseeker">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="jobseekerskill">
+              <PropertyRef Name="ownerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_jsSkills_skills">
+          <End Role="skill" Type="Self.skill" Multiplicity="1" />
+          <End Role="jobseekerskill" Type="Self.jobseekerskill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jobseekerskill">
+              <PropertyRef Name="skillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_match_employer">
+          <End Role="employer" Type="Self.employer" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="employerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_match_event">
+          <End Role="event" Type="Self.event" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="event">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="eventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_match_jobseeker">
+          <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobseeker">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="jobseekerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_owner">
+          <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="workhistory" Type="Self.workhistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobseeker">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="workhistory">
+              <PropertyRef Name="ownerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vacancy_owner">
+          <End Role="employer" Type="Self.employer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="vacancy" Type="Self.vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="vacancy">
+              <PropertyRef Name="ownerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="jobfairModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="employer" EntityType="Self.employer" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="event" EntityType="Self.event" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="jobseeker" EntityType="Self.jobseeker" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="jobseekerskill" EntityType="Self.jobseekerskill" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="match" EntityType="Self.match" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="skill" EntityType="Self.skill" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="vacancy" EntityType="Self.vacancy" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="workhistory" EntityType="Self.workhistory" Schema="jobfair" store:Type="Tables" />
+          <AssociationSet Name="fk_jsSkills_jobseeker" Association="Self.fk_jsSkills_jobseeker">
+            <End Role="jobseeker" EntitySet="jobseeker" />
+            <End Role="jobseekerskill" EntitySet="jobseekerskill" />
+          </AssociationSet>
+          <AssociationSet Name="fk_jsSkills_skills" Association="Self.fk_jsSkills_skills">
+            <End Role="skill" EntitySet="skill" />
+            <End Role="jobseekerskill" EntitySet="jobseekerskill" />
+          </AssociationSet>
+          <AssociationSet Name="fk_match_employer" Association="Self.fk_match_employer">
+            <End Role="employer" EntitySet="employer" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="fk_match_event" Association="Self.fk_match_event">
+            <End Role="event" EntitySet="event" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="fk_match_jobseeker" Association="Self.fk_match_jobseeker">
+            <End Role="jobseeker" EntitySet="jobseeker" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="fk_owner" Association="Self.fk_owner">
+            <End Role="jobseeker" EntitySet="jobseeker" />
+            <End Role="workhistory" EntitySet="workhistory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vacancy_owner" Association="Self.fk_vacancy_owner">
+            <End Role="employer" EntitySet="employer" />
+            <End Role="vacancy" EntitySet="vacancy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="jobfairModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userType" Type="SByte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="event">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="startTime" Type="DateTime" />
+          <Property Name="endTime" Type="DateTime" />
+          <Property Name="venue" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="match" Relationship="Self.fk_match_event" FromRole="event" ToRole="match" />
+        </EntityType>
+        <EntityType Name="jobseeker">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sofSkill1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="softSkill2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="softSkill3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="highestQualification" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="technicaSkill1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="technicalSkill2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="technicalSkill3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contactNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstLanguage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="secondLanguage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="disability" Type="Boolean" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="race" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userType" Type="SByte" Nullable="false" />
+          <Property Name="driversLicense" Type="Boolean" Nullable="false" />
+          <Property Name="criminalRecord" Type="Boolean" Nullable="false" />
+          <Property Name="workPermit" Type="Boolean" />
+          <Property Name="salaryMin" Type="Int32" />
+          <Property Name="salaryMax" Type="Int32" />
+          <Property Name="preferredPosition" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="jobseekerskill" Relationship="Self.fk_jsSkills_jobseeker" FromRole="jobseeker" ToRole="jobseekerskill" />
+          <NavigationProperty Name="match" Relationship="Self.fk_match_jobseeker" FromRole="jobseeker" ToRole="match" />
+          <NavigationProperty Name="workhistory" Relationship="Self.fk_owner" FromRole="jobseeker" ToRole="workhistory" />
+        </EntityType>
+        <EntityType Name="jobseekerskill">
+          <Key>
+            <PropertyRef Name="ownerEmail" />
+            <PropertyRef Name="skillId" />
+          </Key>
+          <Property Name="ownerEmail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="skillId" Type="Int32" Nullable="false" />
+          <Property Name="yearsExperience" Type="Int32" Nullable="false" />
+          <Property Name="createTime" Type="DateTime" />
+          <NavigationProperty Name="jobseeker" Relationship="Self.fk_jsSkills_jobseeker" FromRole="jobseekerskill" ToRole="jobseeker" />
+          <NavigationProperty Name="skill" Relationship="Self.fk_jsSkills_skills" FromRole="jobseekerskill" ToRole="skill" />
+        </EntityType>
+        <EntityType Name="match">
+          <Key>
+            <PropertyRef Name="employerEmail" />
+            <PropertyRef Name="jobseekerEmail" />
+            <PropertyRef Name="eventId" />
+          </Key>
+          <Property Name="employerEmail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jobseekerEmail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eventId" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="event" Relationship="Self.fk_match_event" FromRole="match" ToRole="event" />
+          <NavigationProperty Name="jobseeker" Relationship="Self.fk_match_jobseeker" FromRole="match" ToRole="jobseeker" />
+          <NavigationProperty Name="employer" Relationship="jobfairModel.fk_match_employer" FromRole="match" ToRole="employer" />
+        </EntityType>
+        <EntityType Name="skill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="jobseekerskill" Relationship="Self.fk_jsSkills_skills" FromRole="skill" ToRole="jobseekerskill" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vacancy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ownerEmail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lowestQualification" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="softSkill1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="softSkill2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="softSkill3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="technicalSkill1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="technicalSkill2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="technicalSkill3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="salaryMin" Type="Int32" />
+          <Property Name="salaryMax" Type="Int32" />
+          <Property Name="driversLicense" Type="Boolean" />
+          <Property Name="criminalRecord" Type="Boolean" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="disability" Type="Boolean" />
+          <Property Name="race" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="language" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="employer" Relationship="jobfairModel.fk_vacancy_owner" FromRole="vacancy" ToRole="employer" />
+        </EntityType>
+        <EntityType Name="workhistory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ownerEmail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" />
+          <Property Name="endDate" Type="DateTime" Nullable="false" />
+          <Property Name="employer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="timestamp" Type="DateTime" />
+          <Property Name="WorkHistorycol" Type="String" MaxLength="45" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="jobseeker" Relationship="Self.fk_owner" FromRole="workhistory" ToRole="jobseeker" />
+        </EntityType>
+        <Association Name="fk_match_event">
+          <End Role="event" Type="Self.event" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="event">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="eventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_jsSkills_jobseeker">
+          <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="1" />
+          <End Role="jobseekerskill" Type="Self.jobseekerskill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobseeker">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="jobseekerskill">
+              <PropertyRef Name="ownerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_match_jobseeker">
+          <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobseeker">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="jobseekerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_owner">
+          <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="workhistory" Type="Self.workhistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobseeker">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="workhistory">
+              <PropertyRef Name="ownerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_jsSkills_skills">
+          <End Role="skill" Type="Self.skill" Multiplicity="1" />
+          <End Role="jobseekerskill" Type="Self.jobseekerskill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jobseekerskill">
+              <PropertyRef Name="skillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="jobfairContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
+          <EntitySet Name="event" EntityType="Self.event" />
+          <EntitySet Name="jobseeker" EntityType="Self.jobseeker" />
+          <EntitySet Name="jobseekerskill" EntityType="Self.jobseekerskill" />
+          <EntitySet Name="match" EntityType="Self.match" />
+          <EntitySet Name="skill" EntityType="Self.skill" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="vacancy" EntityType="Self.vacancy" />
+          <EntitySet Name="workhistory" EntityType="Self.workhistory" />
+          <AssociationSet Name="fk_match_event" Association="Self.fk_match_event">
+            <End Role="event" EntitySet="event" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="fk_jsSkills_jobseeker" Association="Self.fk_jsSkills_jobseeker">
+            <End Role="jobseeker" EntitySet="jobseeker" />
+            <End Role="jobseekerskill" EntitySet="jobseekerskill" />
+          </AssociationSet>
+          <AssociationSet Name="fk_match_jobseeker" Association="Self.fk_match_jobseeker">
+            <End Role="jobseeker" EntitySet="jobseeker" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="fk_owner" Association="Self.fk_owner">
+            <End Role="jobseeker" EntitySet="jobseeker" />
+            <End Role="workhistory" EntitySet="workhistory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_jsSkills_skills" Association="Self.fk_jsSkills_skills">
+            <End Role="skill" EntitySet="skill" />
+            <End Role="jobseekerskill" EntitySet="jobseekerskill" />
+          </AssociationSet>
+          <EntitySet Name="employer" EntityType="jobfairModel.employer" />
+          <AssociationSet Name="fk_match_employer" Association="jobfairModel.fk_match_employer">
+            <End Role="employer" EntitySet="employer" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vacancy_owner" Association="jobfairModel.fk_vacancy_owner">
+            <End Role="employer" EntitySet="employer" />
+            <End Role="vacancy" EntitySet="vacancy" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="employer">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contactNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="userType" Type="SByte" Nullable="false" />
+          <Property Name="timestamp" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="match" Relationship="jobfairModel.fk_match_employer" FromRole="employer" ToRole="match" />
+          <NavigationProperty Name="vacancy" Relationship="jobfairModel.fk_vacancy_owner" FromRole="employer" ToRole="vacancy" />
+        </EntityType>
+        <Association Name="fk_match_employer">
+          <End Type="jobfairModel.employer" Role="employer" Multiplicity="1" />
+          <End Type="jobfairModel.match" Role="match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="employerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vacancy_owner">
+          <End Type="jobfairModel.employer" Role="employer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="jobfairModel.vacancy" Role="vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="vacancy">
+              <PropertyRef Name="ownerEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="jobfairModelStoreContainer" CdmEntityContainer="jobfairContext">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="jobfairModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="event">
+            <EntityTypeMapping TypeName="jobfairModel.event">
+              <MappingFragment StoreEntitySet="event">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="venue" ColumnName="venue" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobseeker">
+            <EntityTypeMapping TypeName="jobfairModel.jobseeker">
+              <MappingFragment StoreEntitySet="jobseeker">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="sofSkill1" ColumnName="sofSkill1" />
+                <ScalarProperty Name="softSkill2" ColumnName="softSkill2" />
+                <ScalarProperty Name="softSkill3" ColumnName="softSkill3" />
+                <ScalarProperty Name="highestQualification" ColumnName="highestQualification" />
+                <ScalarProperty Name="technicaSkill1" ColumnName="technicaSkill1" />
+                <ScalarProperty Name="technicalSkill2" ColumnName="technicalSkill2" />
+                <ScalarProperty Name="technicalSkill3" ColumnName="technicalSkill3" />
+                <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="inNo" ColumnName="inNo" />
+                <ScalarProperty Name="firstLanguage" ColumnName="firstLanguage" />
+                <ScalarProperty Name="secondLanguage" ColumnName="secondLanguage" />
+                <ScalarProperty Name="disability" ColumnName="disability" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="race" ColumnName="race" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="driversLicense" ColumnName="driversLicense" />
+                <ScalarProperty Name="criminalRecord" ColumnName="criminalRecord" />
+                <ScalarProperty Name="workPermit" ColumnName="workPermit" />
+                <ScalarProperty Name="salaryMin" ColumnName="salaryMin" />
+                <ScalarProperty Name="salaryMax" ColumnName="salaryMax" />
+                <ScalarProperty Name="preferredPosition" ColumnName="preferredPosition" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobseekerskill">
+            <EntityTypeMapping TypeName="jobfairModel.jobseekerskill">
+              <MappingFragment StoreEntitySet="jobseekerskill">
+                <ScalarProperty Name="ownerEmail" ColumnName="ownerEmail" />
+                <ScalarProperty Name="skillId" ColumnName="skillId" />
+                <ScalarProperty Name="yearsExperience" ColumnName="yearsExperience" />
+                <ScalarProperty Name="createTime" ColumnName="createTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="match">
+            <EntityTypeMapping TypeName="jobfairModel.match">
+              <MappingFragment StoreEntitySet="match">
+                <ScalarProperty Name="employerEmail" ColumnName="employerEmail" />
+                <ScalarProperty Name="jobseekerEmail" ColumnName="jobseekerEmail" />
+                <ScalarProperty Name="eventId" ColumnName="eventId" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skill">
+            <EntityTypeMapping TypeName="jobfairModel.skill">
+              <MappingFragment StoreEntitySet="skill">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="jobfairModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacancy">
+            <EntityTypeMapping TypeName="jobfairModel.vacancy">
+              <MappingFragment StoreEntitySet="vacancy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ownerEmail" ColumnName="ownerEmail" />
+                <ScalarProperty Name="lowestQualification" ColumnName="lowestQualification" />
+                <ScalarProperty Name="softSkill1" ColumnName="softSkill1" />
+                <ScalarProperty Name="softSkill2" ColumnName="softSkill2" />
+                <ScalarProperty Name="softSkill3" ColumnName="softSkill3" />
+                <ScalarProperty Name="technicalSkill1" ColumnName="technicalSkill1" />
+                <ScalarProperty Name="technicalSkill2" ColumnName="technicalSkill2" />
+                <ScalarProperty Name="technicalSkill3" ColumnName="technicalSkill3" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="salaryMin" ColumnName="salaryMin" />
+                <ScalarProperty Name="salaryMax" ColumnName="salaryMax" />
+                <ScalarProperty Name="driversLicense" ColumnName="driversLicense" />
+                <ScalarProperty Name="criminalRecord" ColumnName="criminalRecord" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="disability" ColumnName="disability" />
+                <ScalarProperty Name="race" ColumnName="race" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workhistory">
+            <EntityTypeMapping TypeName="jobfairModel.workhistory">
+              <MappingFragment StoreEntitySet="workhistory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ownerEmail" ColumnName="ownerEmail" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="employer" ColumnName="employer" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="WorkHistorycol" ColumnName="WorkHistorycol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employer">
+            <EntityTypeMapping TypeName="jobfairModel.employer">
+              <MappingFragment StoreEntitySet="employer">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

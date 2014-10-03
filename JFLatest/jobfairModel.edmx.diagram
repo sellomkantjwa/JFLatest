@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="79878b1a968840dbb0373841f97928e5" Name="Diagram1">
+        <EntityTypeShape EntityType="jobfairModel.admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.event" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.jobseeker" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.jobseekerskill" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.match" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.skill" Width="1.5" PointX="0.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.user" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.vacancy" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.workhistory" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="jobfairModel.fk_match_event" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_jsSkills_jobseeker" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_match_jobseeker" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_owner" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_jsSkills_skills" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="jobfairModel.employer" Width="1.5" PointX="0.75" PointY="5.625" />
+        <AssociationConnector Association="jobfairModel.fk_match_employer" />
+        <AssociationConnector Association="jobfairModel.fk_vacancy_owner" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,67 @@
+﻿@model JFLatest.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+<style type="text/css">
+    .form-signin {
+        width: 380px;
+        padding: 15px 35px 45px;
+        margin: 0 auto;
+        background-color: #000;
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+</style>
+
+<hgroup class="title">
+    <h1 >@ViewBag.Title</h1>
+</hgroup>
+
+
+<section id="loginForm" style="width:30%;margin:0 auto" class="page-canvas">
+        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Log in 
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.email)
+                        @Html.TextBoxFor(m => m.email, null, new { @class = "form-control" ,@placeholder = "email" })
+                        @Html.ValidationMessageFor(m => m.email)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "password" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+
+                    <div style="margin-bottom:10px">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+
+                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                </div>
+            </div>
+
+
+
+
+            <p class="pull-right">
+                @Html.ActionLink("Register", "Register") if you don't have an account.
+            </p>
+        }
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
