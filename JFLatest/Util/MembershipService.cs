@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using WebMatrix.WebData;
 
+
 namespace JFLatest.Util
 {
     public class MembershipService : CustomSimpleMembership
@@ -49,6 +50,7 @@ namespace JFLatest.Util
 
         public Boolean CreateUserAndAccount(employer emp, string password)
         {
+            emp.userType = Util.Constants.EMPLOYER_USER_TYPE;
             WebSecurity.CreateUserAndAccount(emp.email, password);
             using (
                 var context = new jobfairContext())

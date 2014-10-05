@@ -68,7 +68,7 @@ namespace JFLatest.Controllers
         // GET: /Account/Register
 
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult RegisterEmployer()
         {
             return View();
         }
@@ -79,7 +79,7 @@ namespace JFLatest.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterEmployer model)
+        public ActionResult RegisterEmployer(RegisterEmployer model)
         {
             if (ModelState.IsValid)
             {
@@ -214,20 +214,6 @@ namespace JFLatest.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult RegisterEmployer(RegisterEmployer model)
-        {
-            if (ModelState.IsValid)
-            {
-                //AccountHelper.registerEmployer(model);
-
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
 
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)

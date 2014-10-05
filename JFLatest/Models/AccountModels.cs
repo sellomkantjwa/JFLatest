@@ -87,6 +87,7 @@ namespace JFLatest.Models
         [Required]
         [StringLength(10,MinimumLength=10, ErrorMessage = "The {0} field must be exactly {2} characters long.")]
         [Display(Name = "Contact Number")]
+        [RegularExpression("([0][0-9]*)", ErrorMessage = "{0} must contain only numbers and start with 0")]
         public string contactNumber { get; set; }
         public string userType { get; set; }
 
