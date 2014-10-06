@@ -35,5 +35,11 @@ namespace JFLatest
         public DbSet<vacancy> vacancy { get; set; }
         public DbSet<workhistory> workhistory { get; set; }
         public DbSet<employer> employer { get; set; }
+        public DbSet<language> language { get; set; }
+        public DbSet<boolean> boolean { get; set; }
+        public DbSet<gender> gender { get; set; }
+        public DbSet<location> location { get; set; }
+        public DbSet<race> race { get; set; }
+        public DbSet<salary_range> salary_range { get; set; }
     }
 }

@@ -202,7 +202,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="boolean.cs">
+      <DependentUpon>jobfairModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="employer.cs">
       <DependentUpon>jobfairModel.tt</DependentUpon>
@@ -211,6 +215,9 @@
       <DependentUpon>jobfairModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="gender.cs">
+      <DependentUpon>jobfairModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,12 +242,25 @@
     <Compile Include="jobseekerskill.cs">
       <DependentUpon>jobfairModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="language.cs">
+      <DependentUpon>jobfairModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="location.cs">
+      <DependentUpon>jobfairModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="match.cs">
       <DependentUpon>jobfairModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\EmployerModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="race.cs">
+      <DependentUpon>jobfairModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="salary_range.cs">
+      <DependentUpon>jobfairModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Util\constants.cs" />
     <Compile Include="Util\MembershipService.cs" />
     <Compile Include="skill.cs">
@@ -403,6 +423,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Employer\Index.cshtml" />
+    <Content Include="Views\Employer\Details.cshtml" />
+    <Content Include="Views\Employer\Create.cshtml" />
+    <Content Include="Views\Employer\Edit.cshtml" />
+    <Content Include="Views\Employer\Delete.cshtml" />
+    <Content Include="Views\Employer\AddVacancy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

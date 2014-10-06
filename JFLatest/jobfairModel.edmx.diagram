@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="79878b1a968840dbb0373841f97928e5" Name="Diagram1">
-        <EntityTypeShape EntityType="jobfairModel.admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.admin" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="jobfairModel.event" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jobfairModel.jobseeker" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="jobfairModel.jobseekerskill" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
@@ -22,6 +22,12 @@
         <EntityTypeShape EntityType="jobfairModel.employer" Width="1.5" PointX="0.75" PointY="5.625" />
         <AssociationConnector Association="jobfairModel.fk_match_employer" />
         <AssociationConnector Association="jobfairModel.fk_vacancy_owner" />
+        <EntityTypeShape EntityType="jobfairModel.language" Width="1.5" PointX="1.375" PointY="0.5" />
+        <EntityTypeShape EntityType="jobfairModel.boolean" Width="1.5" PointX="5.125" PointY="2.75" />
+        <EntityTypeShape EntityType="jobfairModel.gender" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="jobfairModel.location" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="jobfairModel.race" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="jobfairModel.salary_range" Width="1.5" PointX="8.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

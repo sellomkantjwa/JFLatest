@@ -95,7 +95,5 @@ namespace JFLatest.Models
         [StringLength(255, MinimumLength = 2, ErrorMessage = "The {0} field must be at least {2} characters long.")]
         [Display(Name = "Name")]
         public string  name { get; set; }
-
-
     }
 }

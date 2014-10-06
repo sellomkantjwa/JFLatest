@@ -14,6 +14,13 @@
           <Property Name="create_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" />
           <Property Name="userType" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="boolean">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
         <EntityType Name="employer">
           <Key>
             <PropertyRef Name="email" />
@@ -35,6 +42,13 @@
           <Property Name="endTime" Type="datetime" Precision="0" />
           <Property Name="venue" Type="varchar" MaxLength="45" />
           <Property Name="timestamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="jobseeker">
           <Key>
@@ -79,6 +93,20 @@
           <Property Name="yearsExperience" Type="int" Nullable="false" />
           <Property Name="createTime" Type="timestamp" Precision="0" />
         </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
         <EntityType Name="match">
           <Key>
             <PropertyRef Name="employerEmail" />
@@ -89,6 +117,20 @@
           <Property Name="jobseekerEmail" Type="varchar" MaxLength="254" Nullable="false" />
           <Property Name="eventId" Type="int" Nullable="false" />
           <Property Name="timestamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="race">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salary_range">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="the_range" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <EntityType Name="skill">
           <Key>
@@ -233,11 +275,17 @@
         </Association>
         <EntityContainer Name="jobfairModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="boolean" EntityType="Self.boolean" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="employer" EntityType="Self.employer" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="event" EntityType="Self.event" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="gender" EntityType="Self.gender" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="jobseeker" EntityType="Self.jobseeker" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="jobseekerskill" EntityType="Self.jobseekerskill" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="language" EntityType="Self.language" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="location" EntityType="Self.location" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="match" EntityType="Self.match" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="race" EntityType="Self.race" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="salary_range" EntityType="Self.salary_range" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="skill" EntityType="Self.skill" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="vacancy" EntityType="Self.vacancy" Schema="jobfair" store:Type="Tables" />
@@ -515,6 +563,12 @@
             <End Role="employer" EntitySet="employer" />
             <End Role="vacancy" EntitySet="vacancy" />
           </AssociationSet>
+          <EntitySet Name="language" EntityType="jobfairModel.language" />
+          <EntitySet Name="boolean" EntityType="jobfairModel.boolean" />
+          <EntitySet Name="gender" EntityType="jobfairModel.gender" />
+          <EntitySet Name="location" EntityType="jobfairModel.location" />
+          <EntitySet Name="race" EntityType="jobfairModel.race" />
+          <EntitySet Name="salary_range" EntityType="jobfairModel.salary_range" />
         </EntityContainer>
         <EntityType Name="employer">
           <Key>
@@ -555,6 +609,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="boolean">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="race">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="salary_range">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="the_range" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -703,6 +799,54 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="language">
+            <EntityTypeMapping TypeName="jobfairModel.language">
+              <MappingFragment StoreEntitySet="language">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="boolean">
+            <EntityTypeMapping TypeName="jobfairModel.boolean">
+              <MappingFragment StoreEntitySet="boolean">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gender">
+            <EntityTypeMapping TypeName="jobfairModel.gender">
+              <MappingFragment StoreEntitySet="gender">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="location">
+            <EntityTypeMapping TypeName="jobfairModel.location">
+              <MappingFragment StoreEntitySet="location">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="race">
+            <EntityTypeMapping TypeName="jobfairModel.race">
+              <MappingFragment StoreEntitySet="race">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salary_range">
+            <EntityTypeMapping TypeName="jobfairModel.salary_range">
+              <MappingFragment StoreEntitySet="salary_range">
+                <ScalarProperty Name="the_range" ColumnName="the_range" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
