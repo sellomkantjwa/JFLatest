@@ -22,6 +22,9 @@
                 <li><a onclick="return HideSaveButton();" href="#softskills" data-toggle="tab">Soft skills</a></li>
                 <li><a onclick="return ShowSaveButton();" href="#qualifications" data-toggle="tab">Qualification</a></li>
             </ul>
+            <div style="position:relative;">
+                <input class=" btn btn-primary pull-right" type="submit" value="add vacancy" style="position:absolute;bottom:30px;right:30px;margin:0;" />
+            </div>
             <div class="panel-body">
                 <div id=" tab-content" class="tab-content ">
                     <div class="tab-pane in active" id="basic_details">
@@ -67,28 +70,59 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane" id="techskills">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.technicalSkill1)
-                                @Html.TextBoxFor(m => m.technicalSkill1, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.technicalSkill1)
-
-
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.technicalSkill2)
-                                @Html.TextBoxFor(m => m.technicalSkill2, new { @class = "form-control" })
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.technicalSkill1)
+                                    @Html.TextBoxFor(m => m.technicalSkill1, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.technicalSkill1)
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.technicalSkill3)
-                                @Html.TextBoxFor(m => m.technicalSkill3, new { @class = "form-control" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.technicalSkill1Exp)
+                                    @Html.TextBoxFor(m => m.technicalSkill1Exp, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.technicalSkill1Exp)
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.technicalSkill2)
+                                    @Html.TextBoxFor(m => m.technicalSkill2, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.technicalSkill2Exp)
 
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.technicalSkill2Exp)
+                                    @Html.TextBoxFor(m => m.technicalSkill2Exp, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.technicalSkill2Exp)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.technicalSkill3)
+                                    @Html.TextBoxFor(m => m.technicalSkill3, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.technicalSkill3Exp)
+                                    @Html.TextBoxFor(m => m.technicalSkill3Exp, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.technicalSkill3Exp)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                     <div class="tab-pane" id="softskills">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -107,18 +141,13 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane" id="qualifications">
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.highestQualification)
                             @Html.DropDownListFor(m => m.SelectedItemId, new SelectList(Model.highestQualification, "Value", "Text"), new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.highestQualification)
                         </div>
-
                     </div>
-                </div>
-                <div style="position:relative;">
-                    <input class=" btn btn-primary pull-right" type="submit" value="add vacancy" style="position:absolute;bottom:30px;right:30px;margin:0;" />
                 </div>
             </div>
 
@@ -129,4 +158,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="/js/techSkillsBehaviour.js"></script>
 }

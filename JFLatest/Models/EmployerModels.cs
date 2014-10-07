@@ -8,8 +8,11 @@ using System.Web.Security;
 using System.Web.Mvc;
 namespace JFLatest.Models
 {
-    public class AddVacancy
+    public class AddVacancy : IValidatableObject
     {
+
+
+
         [Required]
         public string SelectedItemId { get; set; }
 
@@ -52,6 +55,18 @@ namespace JFLatest.Models
         [Display(Name = "Technical Skill 3")]
         public string technicalSkill3 { get; set; }
 
+
+        [Required]
+        [Display(Name = "Years Experience")]
+        public int technicalSkill1Exp { get; set; }
+
+        [Display(Name = "Years Experience")]
+        public int technicalSkill2Exp { get; set; }
+
+        [Display(Name = "Years Experience")]
+        public int technicalSkill3Exp { get; set; }
+
+
         [Required]
         [Display(Name = "Soft Skill 1")]
         public string softSkill1 { get; set; }
@@ -66,21 +81,12 @@ namespace JFLatest.Models
         [Display(Name = "Highest Qualification")]
         public IEnumerable<SelectListItem> highestQualification { get; set; }
 
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext, SelectListItem dependency)
+        {
+            if (!string.IsNullOrEmpty(dependency.Value.ToString()))
+                yield return new ValidationResult("Description must be supplied.");
+        }
 
 
-
-
-
-        [Required]
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "The {0} field must be exactly {2} characters long.")]
-        [Display(Name = "Contact Number")]
-        [RegularExpression("([0][0-9]*)", ErrorMessage = "{0} must contain only numbers and start with 0")]
-        public string contactNumber { get; set; }
-        public string userType { get; set; }
-
-        [Required]
-        [StringLength(255, MinimumLength = 2, ErrorMessage = "The {0} field must be at least {2} characters long.")]
-        [Display(Name = "Name")]
-        public string name { get; set; }
     }
 }

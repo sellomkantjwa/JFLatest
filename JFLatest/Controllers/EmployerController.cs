@@ -124,9 +124,14 @@ namespace JFLatest.Controllers
                 Value = x.value.ToString(),
                 Text = x.value
             });
+            
 
             AddVacancy addVacancyModel = new AddVacancy();
 
+
+            addVacancyModel.technicalSkill1Exp = 1;
+            addVacancyModel.technicalSkill2Exp = 1;
+            addVacancyModel.technicalSkill3Exp = 1;
             addVacancyModel.NoCriminalRecord = booleans;
             addVacancyModel.Disability = booleans;
             addVacancyModel.DriversLicense = booleans;
