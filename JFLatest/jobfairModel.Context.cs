@@ -41,5 +41,6 @@ namespace JFLatest
         public DbSet<location> location { get; set; }
         public DbSet<race> race { get; set; }
         public DbSet<salary_range> salary_range { get; set; }
+        public DbSet<qualification> qualification { get; set; }
     }
 }

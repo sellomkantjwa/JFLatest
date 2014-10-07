@@ -118,6 +118,13 @@
           <Property Name="eventId" Type="int" Nullable="false" />
           <Property Name="timestamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <EntityType Name="qualification">
+          <Key>
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="level" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="race">
           <Key>
             <PropertyRef Name="id" />
@@ -284,6 +291,7 @@
           <EntitySet Name="language" EntityType="Self.language" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="location" EntityType="Self.location" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="match" EntityType="Self.match" Schema="jobfair" store:Type="Tables" />
+          <EntitySet Name="qualification" EntityType="Self.qualification" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="race" EntityType="Self.race" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="salary_range" EntityType="Self.salary_range" Schema="jobfair" store:Type="Tables" />
           <EntitySet Name="skill" EntityType="Self.skill" Schema="jobfair" store:Type="Tables" />
@@ -569,6 +577,7 @@
           <EntitySet Name="location" EntityType="jobfairModel.location" />
           <EntitySet Name="race" EntityType="jobfairModel.race" />
           <EntitySet Name="salary_range" EntityType="jobfairModel.salary_range" />
+          <EntitySet Name="qualification" EntityType="jobfairModel.qualification" />
         </EntityContainer>
         <EntityType Name="employer">
           <Key>
@@ -650,6 +659,13 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="the_range" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="qualification">
+          <Key>
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="level" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -847,6 +863,14 @@
               <MappingFragment StoreEntitySet="salary_range">
                 <ScalarProperty Name="the_range" ColumnName="the_range" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="qualification">
+            <EntityTypeMapping TypeName="jobfairModel.qualification">
+              <MappingFragment StoreEntitySet="qualification">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="level" ColumnName="level" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

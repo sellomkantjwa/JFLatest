@@ -28,6 +28,7 @@
         <EntityTypeShape EntityType="jobfairModel.location" Width="1.5" PointX="7.375" PointY="3.75" />
         <EntityTypeShape EntityType="jobfairModel.race" Width="1.5" PointX="7.375" PointY="6.75" />
         <EntityTypeShape EntityType="jobfairModel.salary_range" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="jobfairModel.qualification" Width="1.5" PointX="9.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
