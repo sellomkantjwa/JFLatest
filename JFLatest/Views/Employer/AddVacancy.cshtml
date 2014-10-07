@@ -1,0 +1,132 @@
+﻿@model JFLatest.Models.AddVacancy
+@{
+    ViewBag.Title = "Add Vacancy";
+}
+
+<h2>Add Vacancy</h2>
+<section id="addVacancyForm" class="page-canvas col-md-8" style="margin:0 auto; float:none">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <div class="panel panel-primary" style="height:497px">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    add vacancy
+                </h3>
+            </div>
+            <ul id="pills" class="nav nav-tabs" data-pills="pills" style="margin: 1%; padding: 5px; margin-top: 30px; text-align: left">
+                <li class="active"><a onclick="return HideSaveButton();" href="#basic_details" data-toggle="tab">Basic Details</a></li>
+                <li><a onclick="return HideSaveButton();" href="#techskills" data-toggle="tab">Technical Skills</a></li>
+                <li><a onclick="return HideSaveButton();" href="#softskills" data-toggle="tab">Soft skills</a></li>
+                <li><a onclick="return ShowSaveButton();" href="#qualifications" data-toggle="tab">Qualification</a></li>
+            </ul>
+            <div class="panel-body">
+                <div id=" tab-content" class="tab-content ">
+                    <div class="tab-pane in active" id="basic_details">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Language)
+                                @Html.DropDownListFor(m => m.SelectedItemId, new SelectList(Model.Language, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.NoCriminalRecord)
+                                @Html.DropDownListFor(m => m.NoCriminalRecord, new SelectList(Model.NoCriminalRecord, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.DriversLicense)
+                                @Html.DropDownListFor(m => m.DriversLicense, new SelectList(Model.DriversLicense, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Disability)
+                                @Html.DropDownListFor(m => m.SelectedItemId, new SelectList(Model.Disability, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.WorkLocation)
+                                @Html.DropDownListFor(m => m.WorkLocation, new SelectList(Model.WorkLocation, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Race)
+                                @Html.DropDownListFor(m => m.Race, new SelectList(Model.Race, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.SalaryRange)
+                                @Html.DropDownListFor(m => m.SalaryRange, new SelectList(Model.SalaryRange, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Gender)
+                                @Html.DropDownListFor(m => m.SelectedItemId, new SelectList(Model.Gender, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="techskills">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.technicalSkill1)
+                                @Html.TextBoxFor(m => m.technicalSkill1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.technicalSkill1)
+
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.technicalSkill2)
+                                @Html.TextBoxFor(m => m.technicalSkill2, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.technicalSkill3)
+                                @Html.TextBoxFor(m => m.technicalSkill3, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="softskills">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.softSkill1)
+                                @Html.TextBoxFor(m => m.softSkill1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.softSkill1)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.softSkill2)
+                                @Html.TextBoxFor(m => m.softSkill2, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.softSkill3)
+                                @Html.TextBoxFor(m => m.softSkill3, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="qualifications">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.highestQualification)
+                            @Html.DropDownListFor(m => m.SelectedItemId, new SelectList(Model.highestQualification, "Value", "Text"), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.highestQualification)
+                        </div>
+
+                    </div>
+                </div>
+                <div style="position:relative;">
+                    <input class=" btn btn-primary pull-right" type="submit" value="add vacancy" style="position:absolute;bottom:30px;right:30px;margin:0;" />
+                </div>
+            </div>
+
+
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,57 @@
+﻿@model JFLatest.employer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>employer</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.contactNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.contactNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.userType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.userType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.timestamp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.timestamp)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
