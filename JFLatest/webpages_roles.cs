@@ -12,14 +12,16 @@ namespace JFLatest
     using System;
     using System.Collections.Generic;
     
-    public partial class match
+    public partial class webpages_roles
     {
-        public string employerEmail { get; set; }
-        public string jobseekerEmail { get; set; }
-        public int eventId { get; set; }
-        public System.DateTime timestamp { get; set; }
+        public webpages_roles()
+        {
+            this.webpages_usersinroles = new HashSet<webpages_usersinroles>();
+        }
     
-        public virtual @event @event { get; set; }
-        public virtual jobseeker jobseeker { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+    
+        public virtual ICollection<webpages_usersinroles> webpages_usersinroles { get; set; }
     }
 }

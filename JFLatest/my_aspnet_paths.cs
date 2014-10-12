@@ -12,14 +12,11 @@ namespace JFLatest
     using System;
     using System.Collections.Generic;
     
-    public partial class jobseekerskill
+    public partial class my_aspnet_paths
     {
-        public string ownerEmail { get; set; }
-        public int skillId { get; set; }
-        public int yearsExperience { get; set; }
-        public Nullable<System.DateTime> createTime { get; set; }
-    
-        public virtual jobseeker jobseeker { get; set; }
-        public virtual skill skill { get; set; }
+        public int applicationId { get; set; }
+        public string pathId { get; set; }
+        public string path { get; set; }
+        public string loweredPath { get; set; }
     }
 }

@@ -15,6 +15,6 @@ namespace JFLatest
     public partial class boolean
     {
         public sbyte id { get; set; }
-        public string value { get; set; }
+        public bool value { get; set; }
     }
 }

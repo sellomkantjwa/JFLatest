@@ -12,14 +12,10 @@ namespace JFLatest
     using System;
     using System.Collections.Generic;
     
-    public partial class match
+    public partial class my_aspnet_roles
     {
-        public string employerEmail { get; set; }
-        public string jobseekerEmail { get; set; }
-        public int eventId { get; set; }
-        public System.DateTime timestamp { get; set; }
-    
-        public virtual @event @event { get; set; }
-        public virtual jobseeker jobseeker { get; set; }
+        public int id { get; set; }
+        public int applicationId { get; set; }
+        public string name { get; set; }
     }
 }

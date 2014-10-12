@@ -16,7 +16,8 @@ namespace JFLatest
     {
         public jobseeker()
         {
-            this.jobseekerskill = new HashSet<jobseekerskill>();
+            this.jobseekersoftskill = new HashSet<jobseekersoftskill>();
+            this.jobseekertechskill = new HashSet<jobseekertechskill>();
             this.match = new HashSet<match>();
             this.workhistory = new HashSet<workhistory>();
         }
@@ -24,13 +25,7 @@ namespace JFLatest
         public string email { get; set; }
         public string firstName { get; set; }
         public string surname { get; set; }
-        public string sofSkill1 { get; set; }
-        public string softSkill2 { get; set; }
-        public string softSkill3 { get; set; }
         public string highestQualification { get; set; }
-        public string technicaSkill1 { get; set; }
-        public string technicalSkill2 { get; set; }
-        public string technicalSkill3 { get; set; }
         public string contactNumber { get; set; }
         public string address { get; set; }
         public string password { get; set; }
@@ -46,11 +41,11 @@ namespace JFLatest
         public bool criminalRecord { get; set; }
         public Nullable<bool> workPermit { get; set; }
         public Nullable<int> salaryMin { get; set; }
-        public Nullable<int> salaryMax { get; set; }
         public string preferredPosition { get; set; }
         public Nullable<System.DateTime> timestamp { get; set; }
     
-        public virtual ICollection<jobseekerskill> jobseekerskill { get; set; }
+        public virtual ICollection<jobseekersoftskill> jobseekersoftskill { get; set; }
+        public virtual ICollection<jobseekertechskill> jobseekertechskill { get; set; }
         public virtual ICollection<match> match { get; set; }
         public virtual ICollection<workhistory> workhistory { get; set; }
     }

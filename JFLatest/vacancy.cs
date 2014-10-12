@@ -14,18 +14,17 @@ namespace JFLatest
     
     public partial class vacancy
     {
+        public vacancy()
+        {
+            this.vacancytechskill = new HashSet<vacancytechskill>();
+            this.vacancysoftskill = new HashSet<vacancysoftskill>();
+        }
+    
         public int id { get; set; }
         public string ownerEmail { get; set; }
         public string lowestQualification { get; set; }
-        public string softSkill1 { get; set; }
-        public string softSkill2 { get; set; }
-        public string softSkill3 { get; set; }
-        public string technicalSkill1 { get; set; }
-        public string technicalSkill2 { get; set; }
-        public string technicalSkill3 { get; set; }
         public string location { get; set; }
         public Nullable<int> salaryMin { get; set; }
-        public Nullable<int> salaryMax { get; set; }
         public Nullable<bool> driversLicense { get; set; }
         public Nullable<bool> criminalRecord { get; set; }
         public string gender { get; set; }
@@ -35,6 +34,7 @@ namespace JFLatest
         public string language { get; set; }
         public System.DateTime timestamp { get; set; }
     
-        public virtual employer employer { get; set; }
+        public virtual ICollection<vacancytechskill> vacancytechskill { get; set; }
+        public virtual ICollection<vacancysoftskill> vacancysoftskill { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace JFLatest.Controllers
 {
@@ -11,9 +12,12 @@ namespace JFLatest.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            Util.DBConnectionManager db = new Util.DBConnectionManager();
-
+            ViewBag.Message = "Welcome";
+            if(User.Identity.IsAuthenticated){
+                if(Roles.IsUserInRole(User.Identity.Name, "employer")){
+                    return RedirectToAction("Index", "Employer");
+                }
+            }
             return View();
 
         }

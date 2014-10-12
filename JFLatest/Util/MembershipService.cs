@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using WebMatrix.WebData;
 
 
@@ -51,15 +52,47 @@ namespace JFLatest.Util
         public Boolean CreateUserAndAccount(employer emp, string password)
         {
             emp.userType = Util.Constants.EMPLOYER_USER_TYPE;
-            WebSecurity.CreateUserAndAccount(emp.email, password);
+
+            try
+            {
+                WebSecurity.CreateUserAndAccount(emp.email, password);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
             using (
                 var context = new jobfairContext())
             {
                 context.employer.Add(emp);
+                try
+                {
+                    emp.id = GetUserId(emp.email);
+                    if (!Roles.IsUserInRole(emp.email, "employer"))
+                    {
+                        Roles.AddUserToRole(emp.email, "employer");
+                    }
+
+                }
+                catch (HttpException e)
+                {
+                    throw e;
+                }
                 context.SaveChanges();
             }
-
             return true;
+        }
+
+        public int GetUserId(string email)
+        {
+            int userId = -1;
+            using (jobfairContext db = new jobfairContext())
+            {
+                user emp = db.user.Where(e => e.email == email).FirstOrDefault();
+                userId = emp.UserId;
+            }
+
+            return userId;
         }
     }
 }

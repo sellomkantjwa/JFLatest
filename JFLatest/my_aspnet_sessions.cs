@@ -12,14 +12,17 @@ namespace JFLatest
     using System;
     using System.Collections.Generic;
     
-    public partial class match
+    public partial class my_aspnet_sessions
     {
-        public string employerEmail { get; set; }
-        public string jobseekerEmail { get; set; }
-        public int eventId { get; set; }
-        public System.DateTime timestamp { get; set; }
-    
-        public virtual @event @event { get; set; }
-        public virtual jobseeker jobseeker { get; set; }
+        public string SessionId { get; set; }
+        public int ApplicationId { get; set; }
+        public System.DateTime Created { get; set; }
+        public System.DateTime Expires { get; set; }
+        public System.DateTime LockDate { get; set; }
+        public int LockId { get; set; }
+        public int Timeout { get; set; }
+        public bool Locked { get; set; }
+        public byte[] SessionItems { get; set; }
+        public int Flags { get; set; }
     }
 }

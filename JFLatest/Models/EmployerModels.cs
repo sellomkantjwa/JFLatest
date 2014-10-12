@@ -8,42 +8,41 @@ using System.Web.Security;
 using System.Web.Mvc;
 namespace JFLatest.Models
 {
-    public class AddVacancy : IValidatableObject
+    public class AddVacancy
     {
-
-
-
+        public bool showSideMenu { get; set; }
+        [Display(Name = "Vacancy Name")]
         [Required]
-        public string SelectedItemId { get; set; }
+        public string name { get; set; }
 
-        [Required]
         [Display(Name = "Language")]
-        public IEnumerable<SelectListItem> Language { get; set; }
+        public IEnumerable<SelectListItem> LanguageOptions { get; set; }
 
 
         [Display(Name = "Clean criminal record")]
-        public IEnumerable<SelectListItem> NoCriminalRecord { get; set; }
+        public IEnumerable<SelectListItem> NoCriminalRecordOptions { get; set; }
 
 
         [Display(Name = "Driver's license required")]
-        public IEnumerable<SelectListItem> DriversLicense { get; set; }
+        public IEnumerable<SelectListItem> DriversLicenseOptions { get; set; }
 
 
         [Display(Name = "Race")]
-        public IEnumerable<SelectListItem> Race { get; set; }
+        public IEnumerable<SelectListItem> RaceOptions { get; set; }
 
         [Display(Name = "Work location")]
-        public IEnumerable<SelectListItem> WorkLocation { get; set; }
+        public IEnumerable<SelectListItem> WorkLocationOptions { get; set; }
 
 
-        [Display(Name = "Salary Range")]
-        public IEnumerable<SelectListItem> SalaryRange { get; set; }
+        [Display(Name = "Minimum Salary (R)")]
+        [RegularExpression("[0-9]+", ErrorMessage = "Enter a numeric value")]
+        public int SalaryMin{ get; set; }
 
         [Display(Name = "Must have disability")]
-        public IEnumerable<SelectListItem> Disability { get; set; }
+        public IEnumerable<SelectListItem> DisabilityOptions { get; set; }
 
         [Display(Name = "Gender required for role")]
-        public IEnumerable<SelectListItem> Gender { get; set; }
+        public IEnumerable<SelectListItem> GenderOptions { get; set; }
 
         [Required]
         [Display(Name = "Technical Skill 1")]
@@ -77,16 +76,30 @@ namespace JFLatest.Models
         [Display(Name = "Soft Skill 3")]
         public string softSkill3 { get; set; }
 
+        //[Required]
+        //[Display(Name = "Highest Qualification")]
+        //public IEnumerable<SelectListItem> qualificationOptions { get; set; }
+
+
+
+
         [Required]
-        [Display(Name = "Highest Qualification")]
-        public IEnumerable<SelectListItem> highestQualification { get; set; }
+        public string language { get; set; }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext, SelectListItem dependency)
-        {
-            if (!string.IsNullOrEmpty(dependency.Value.ToString()))
-                yield return new ValidationResult("Description must be supplied.");
-        }
+        public string gender { get; set; }
 
+        public string location { get; set; }
 
+        public bool? driversLicense { get; set; }
+
+        public bool? disability { get; set; }
+
+        public bool? criminalRecord { get; set; }
+
+        public string lowestQualification { get; set; }
+
+        public string race { get; set; }
+
+        public int qualificationLevel { get; set; }
     }
 }

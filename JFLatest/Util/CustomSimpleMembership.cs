@@ -16,6 +16,8 @@ namespace JFLatest.Util
         Boolean CreateUserAndAccount(String username, string password, out String confirmationToken, String emailaddress = null);
         Boolean Login(String username, String password, Boolean persistCookie = false);
         Boolean CreateUserAndAccount(employer emp, string password);
+
+        int GetUserId(string email);
         void Logout();
     }
 }

@@ -9,7 +9,7 @@
     @*@Styles.Render("~/Content/Site.css")*@
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body style="background-image: url(jobfair_background.jpg)">
+<body @*style="background-image:url(../16.jpg)"*@>
     <header>
         <nav class="navbar navbar-default" style="border-radius:0 !important" role="navigation">
             <div class="container-fluid">
@@ -38,15 +38,35 @@
             </div><!-- /.container-fluid -->
         </nav>
     </header>
+
     <div id="body">
+
+        <section class="col-sm-2">
+            <!-- left -->
+            <h3> Menu</h3>
+            <hr>
+            <ul class="nav nav-stacked">
+                <li>@Html.ActionLink("Dashboard", "Index", "Employer")</li>
+                <li>@Html.ActionLink("Add Vacancy", "AddVacancy", "Employer")</li>
+                <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
+                <li><a href="javascript:;"><i class="glyphicon glyphicon-book"></i> Books</a></li>
+                <li><a href="javascript:;"><i class="glyphicon glyphicon-briefcase"></i> Tools</a></li>
+                <li><a href="javascript:;"><i class="glyphicon glyphicon-time"></i> Real-time</a></li>
+                <li><a href="javascript:;"><i class="glyphicon glyphicon-plus"></i> Advanced..</a></li>
+            </ul>
+        </section>
         @RenderSection("featured", required: false)
-        <section>
+        <section class="col-sm-9 col-md-8">
+            <h3>@ViewBag.Title</h3>
+            <hr>
             @RenderBody()
         </section>
     </div>
     <footer>
         <div class="content-wrapper">
-            <div class="float-left">
+            <div class="float-left" style="position:fixed !important;
+                 width:100%;
+                 bottom:0;text-align:right">
                 <p>&copy; @DateTime.Now.Year - Job Fairé</p>
             </div>
         </div>

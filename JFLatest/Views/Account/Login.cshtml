@@ -13,28 +13,23 @@
     }
 </style>
 
-<hgroup class="title">
-    <h1 >@ViewBag.Title</h1>
-</hgroup>
+<section id="loginForm" class="col-md-6" style="float: none;margin: 0 auto;">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
 
-<section id="loginForm" style="width:30%;margin:0 auto" class="page-canvas">
-        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="panel-primary">
+                @*<h3 class="panel-title">
+                        Log in
+                    </h3>*@
 
-
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Log in 
-                    </h3>
-                </div>
                 <div class="panel-body">
                     <div class="form-group">
                         @Html.LabelFor(m => m.email)
-                        @Html.TextBoxFor(m => m.email, null, new { @class = "form-control" ,@placeholder = "email" })
+                        @Html.TextBoxFor(m => m.email, null, new { @class = "form-control", @placeholder = "email" })
                         @Html.ValidationMessageFor(m => m.email)
                     </div>
                     <div class="form-group">
@@ -51,14 +46,15 @@
                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
                 </div>
             </div>
+        </div>
 
 
 
 
-            <p class="pull-right">
-                @Html.ActionLink("Register", "Register") if you don't have an account.
-            </p>
-        }
+        <p class="pull-right">
+            @Html.ActionLink("Register", "Register") if you don't have an account.
+        </p>
+    }
 </section>
 
 

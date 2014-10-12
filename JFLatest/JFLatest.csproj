@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,6 +41,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +63,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -68,12 +72,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -134,6 +135,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.30506.0\lib\net40\WebMatrix.Data.dll</HintPath>
@@ -197,7 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -205,83 +207,143 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="boolean.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="employer.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="event.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="gender.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="jobfairModel.Context.cs">
+    <Compile Include="jobfair.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>jobfairModel.Context.tt</DependentUpon>
+      <DependentUpon>jobfair.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="jobfairModel.cs">
+    <Compile Include="jobfair.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
-    <Compile Include="jobfairModel.Designer.cs">
+    <Compile Include="jobfair.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>jobfairModel.edmx</DependentUpon>
+      <DependentUpon>jobfair.edmx</DependentUpon>
     </Compile>
     <Compile Include="jobseeker.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
-    <Compile Include="jobseekerskill.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+    <Compile Include="jobseekersoftskill.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="jobseekertechskill.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="language.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="location.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="match.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\EmployerModels.cs" />
+    <Compile Include="my_aspnet_applications.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_paths.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_personalizationallusers.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_personalizationperuser.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_profiles.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_roles.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_sessioncleanup.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_sessions.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_sitemap.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_users.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_usersinroles.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="qualification.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="race.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="salary_range.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
-    <Compile Include="Util\constants.cs" />
-    <Compile Include="Util\MembershipService.cs" />
     <Compile Include="skill.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="user.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
+    <Compile Include="Util\constants.cs" />
+    <Compile Include="Util\CustomRoles.cs" />
+    <Compile Include="Util\MembershipService.cs" />
     <Compile Include="Util\AccountHelper.cs" />
     <Compile Include="Util\CustomSimpleMembership.cs" />
     <Compile Include="Util\DBConnectionManager.cs" />
+    <Compile Include="Util\RoleService.cs" />
     <Compile Include="vacancy.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vacancysoftskill.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vacancytechskill.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_membership.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_oauthmembership.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_oauthtoken.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_roles.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_usersinroles.cs">
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
     <Compile Include="workhistory.cs">
-      <DependentUpon>jobfairModel.tt</DependentUpon>
+      <DependentUpon>jobfair.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -353,22 +415,22 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootswatch.less" />
     <Content Include="Content\variables.less" />
-    <EntityDeploy Include="jobfairModel.edmx">
+    <EntityDeploy Include="jobfair.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>jobfairModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>jobfair.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="jobfairModel.Context.tt">
+    <Content Include="jobfair.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>jobfairModel.edmx</DependentUpon>
-      <LastGenOutput>jobfairModel.Context.cs</LastGenOutput>
+      <DependentUpon>jobfair.edmx</DependentUpon>
+      <LastGenOutput>jobfair.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="jobfairModel.edmx.diagram">
-      <DependentUpon>jobfairModel.edmx</DependentUpon>
+    <Content Include="jobfair.edmx.diagram">
+      <DependentUpon>jobfair.edmx</DependentUpon>
     </Content>
-    <Content Include="jobfairModel.tt">
+    <Content Include="jobfair.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>jobfairModel.edmx</DependentUpon>
-      <LastGenOutput>jobfairModel.cs</LastGenOutput>
+      <DependentUpon>jobfair.edmx</DependentUpon>
+      <LastGenOutput>jobfair.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="jobfair_background.jpg" />
@@ -389,7 +451,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -434,6 +498,13 @@
     <Content Include="Views\Employer\Edit.cshtml" />
     <Content Include="Views\Employer\Delete.cshtml" />
     <Content Include="Views\Employer\AddVacancy.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\ViewEmployers.cshtml" />
+    <Content Include="Views\Employer\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

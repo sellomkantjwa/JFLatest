@@ -18,7 +18,17 @@
 else
 {
     <ul class="nav navbar-nav" style="border-radius: 0 !important; float: right">
-        <li>@Html.ActionLink("Register", "RegisterEmployer", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="dropdown">
+            <a href ="#"class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                Register
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">@Html.ActionLink("Jobseeker", "RegisterJobseeker", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", role = "menuitem" })</li>
+                <li role="presentation">@Html.ActionLink("Employer", "RegisterEmployer", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", role = "menuitem" })</li>
+            </ul>
+        </li>
+
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

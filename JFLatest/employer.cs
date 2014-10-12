@@ -14,20 +14,12 @@ namespace JFLatest
     
     public partial class employer
     {
-        public employer()
-        {
-            this.match = new HashSet<match>();
-            this.vacancy = new HashSet<vacancy>();
-        }
-    
+        public int id { get; set; }
         public string email { get; set; }
         public string address { get; set; }
         public string name { get; set; }
         public string contactNumber { get; set; }
         public sbyte userType { get; set; }
         public Nullable<System.DateTime> timestamp { get; set; }
-    
-        public virtual ICollection<match> match { get; set; }
-        public virtual ICollection<vacancy> vacancy { get; set; }
     }
 }

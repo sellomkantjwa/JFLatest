@@ -16,13 +16,19 @@ namespace JFLatest
     {
         public skill()
         {
-            this.jobseekerskill = new HashSet<jobseekerskill>();
+            this.jobseekersoftskill = new HashSet<jobseekersoftskill>();
+            this.jobseekertechskill = new HashSet<jobseekertechskill>();
+            this.vacancytechskill = new HashSet<vacancytechskill>();
+            this.vacancysoftskill = new HashSet<vacancysoftskill>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
         public string type { get; set; }
     
-        public virtual ICollection<jobseekerskill> jobseekerskill { get; set; }
+        public virtual ICollection<jobseekersoftskill> jobseekersoftskill { get; set; }
+        public virtual ICollection<jobseekertechskill> jobseekertechskill { get; set; }
+        public virtual ICollection<vacancytechskill> vacancytechskill { get; set; }
+        public virtual ICollection<vacancysoftskill> vacancysoftskill { get; set; }
     }
 }
