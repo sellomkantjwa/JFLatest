@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ab41710fc8b44fa0abebf27848cb5b08" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="jobfairModel.admin" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.boolean" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.employer" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.event" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.gender" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.jobseeker" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.jobseekersoftskill" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.jobseekertechskill" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.language" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.location" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.match" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_applications" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_paths" Width="1.5" PointX="11.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_personalizationallusers" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_personalizationperuser" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_profiles" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_roles" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_sessioncleanup" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_sessions" Width="1.5" PointX="11.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_sitemap" Width="1.5" PointX="13.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_users" Width="1.5" PointX="13.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.my_aspnet_usersinroles" Width="1.5" PointX="13.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.qualification" Width="1.5" PointX="14.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.race" Width="1.5" PointX="14.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.salary_range" Width="1.5" PointX="15.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.skill" Width="1.5" PointX="0.625" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.user" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.vacancy" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.vacancysoftskill" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.vacancytechskill" Width="1.5" PointX="6.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.webpages_membership" Width="1.5" PointX="5.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.webpages_oauthmembership" Width="1.5" PointX="7.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.webpages_oauthtoken" Width="1.5" PointX="15.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.webpages_roles" Width="1.5" PointX="8.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.webpages_usersinroles" Width="1.5" PointX="11" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobfairModel.workhistory" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="jobfairModel.fk_match_event" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_jsss_js" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_jsts_js" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_match_jobseeker" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_owner" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_jsss_skill" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_sjts_skill" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_vacancyts_skill" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fkvacancyss_skill" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_vacancy_ts_vacancy" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_vacancyss_vacancy" ManuallyRouted="false" />
+        <AssociationConnector Association="jobfairModel.fk_RoleId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

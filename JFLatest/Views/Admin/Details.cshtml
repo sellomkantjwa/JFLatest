@@ -1,0 +1,29 @@
+﻿@model JFLatest.employer
+
+    @{
+        ViewBag.Title = "Details";
+    }
+
+    <h2>Details</h2>
+
+    <fieldset>
+        <legend>admin</legend>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.email)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.email)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.userType)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.userType)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
