@@ -1,0 +1,13 @@
+﻿<section class="col-sm-2">
+    <!-- left -->
+    <h4> Matches</h4>
+    <hr>
+    <ul class="nav nav-stacked">
+
+        @if (!string.IsNullOrEmpty(ViewBag.employer))
+        {
+            var separator = "-";
+            <li><p><a href="#">@ViewBag.employer&nbsp;@separator&nbsp;@ViewBag.jobseeker</a><p></li>
+        }
+    </ul>
+</section>

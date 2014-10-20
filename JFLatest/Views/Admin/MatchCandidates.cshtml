@@ -1,0 +1,31 @@
+﻿@model JFLatest.Models.MatchCandidatesModel
+@{
+    ViewBag.Title = "Match candidates to vacancy";
+}
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<div class="col-md-10">
+    <div>
+        @Html.Partial("_PartialMatchCandidatesVacancy", Model.vacancy)
+    </div>
+    <div id="news">
+        @Html.Partial("_PartialMatchCandidatesJobSeeker", Model.jobseekers)
+    </div>
+</div>
+<div id="matchSidebar" class="col-md-2">
+    @Html.Partial("_PartialMatch")
+
+</div>
+
+<div>
+    @Ajax.ActionLink("match",
+                 "Match",
+                 new { jobseeker = Model.jobseekers.ElementAt(Model.jobseekers.PageNumber - 1).email, vacancy = Model.vacancy.currentVacancy.id },
+                 new AjaxOptions
+                 {
+                     HttpMethod = "GET",
+                     InsertionMode = InsertionMode.Replace,
+                     UpdateTargetId = "matchSidebar",
+                 })
+</div>

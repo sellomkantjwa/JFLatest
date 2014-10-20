@@ -1,0 +1,122 @@
+﻿@model PagedList.IPagedList<JFLatest.jobseeker>
+@using PagedList.Mvc;
+@using PagedList
+
+
+
+@foreach (JFLatest.jobseeker js in (Model))
+{
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            <h6>Jobseeker</h6>
+        </div>
+        <div class="panel panel-body" style="border:none">
+            <div class="col-md-6">
+                <div>
+                    @Html.LabelFor(modelItem => js.firstName, "Name"):
+                    @Html.DisplayFor(modelItem => js.firstName) @Html.DisplayFor(modelItem => js.surname)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => js.email, "Email"):
+                    @Html.DisplayFor(modelItem => js.email)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => js.location, "Location"):
+                    @Html.DisplayFor(modelItem => js.location)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => js.firstLanguage, "Language"):
+                    @Html.DisplayFor(modelItem => js.firstLanguage)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => js.salaryMin, "Minimum salary"):
+                    @Html.DisplayFor(modelItem => js.salaryMin)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => js.race, "Race"):
+                    @Html.DisplayFor(modelItem => js.race)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+
+                <div>
+                    @Html.LabelFor(modelItem => js.gender, "Gender"):
+                    @if (@js.disability != null)
+                    {
+                        @Html.DisplayFor(modelItem => js.gender)
+                    }
+                </div>
+
+                @*Tech Skill area*@
+
+                <div>
+                    @Html.LabelFor(modelItem => js.jobseekertechskill, "Technical  Skills"):
+                    @foreach (JFLatest.jobseekertechskill techSkill in js.jobseekertechskill)
+                    {
+                        @Html.DisplayFor(modelItem => techSkill.skill.name)
+                        @:,
+                    }
+                </div>
+
+                @* Soft Skill area *@
+                <div>
+                    @Html.LabelFor(modelItem => js.jobseekersoftskill, "Soft Skills"):
+                    @foreach (JFLatest.jobseekersoftskill softSkill in js.jobseekersoftskill)
+                    {
+                        @Html.DisplayFor(modelItem => js.jobseekersoftskill.First().skill.name)
+                        @:,
+
+                    }
+                </div>
+                <div>
+                    @Html.LabelFor(modelItem => js.driversLicense, "Driver's license"):
+                    @if (@js.disability != null)
+                    {
+                        @Html.DisplayTextFor(modelItem => js.driversLicense)
+                    }
+
+                </div>
+                <div>
+                    @Html.LabelFor(modelItem => js.disability, "Disability "):
+                    @if (@js.disability != null)
+                    {
+                        @Html.DisplayTextFor(modelItem => js.disability)
+                    }
+                </div>
+
+
+                <div>
+                    @Html.LabelFor(modelItem => js.criminalRecord, "Criminal record"):
+                    @if (@js.disability != null)
+                    {
+                        @Html.DisplayTextFor(modelItem => js.criminalRecord)
+                    }
+                </div>
+
+            </div>
+            <div style="text-align:center;">
+                @Html.PagedListPager((IPagedList)Model, jobseekerPage => Url.Action("NextPage", new { jobseekerPage }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "news" }))
+                @Ajax.ActionLink("match",
+                 "Match",
+                 new { },
+                 new AjaxOptions
+                 {
+                     HttpMethod = "GET",
+                     InsertionMode = InsertionMode.Replace,
+                     UpdateTargetId = "matchSidebar",
+                 })
+            </div>
+
+
+        </div>
+
+
+    </div>
+}

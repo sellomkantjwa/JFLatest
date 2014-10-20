@@ -5,7 +5,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
+using JFLatest.Models;
 namespace JFLatest.Controllers
 {
     public class AdminController : Controller
@@ -123,7 +124,47 @@ namespace JFLatest.Controllers
         {
             return View(db.employer.ToList());
         }
+
+        public ActionResult MatchCandidates(int? jobseekerPage, MatchCandidatesModel mc, int? vacancyID)
+        {
+            if (mc == null)
+            {
+                mc = new MatchCandidatesModel();
+            }
+            mc.jobseekers = db.jobseeker.ToList().ToPagedList(jobseekerPage ?? 1, 1);
+
+            if (mc.vacancy == null)
+            {
+                mc.vacancy = new MatchCandidatesModel.vacancyModel();
+            }
+
+
+            if (mc.vacancy.matchedJobseekers == null)
+            {
+                mc.vacancy.matchedJobseekers = new List<string>();
+            }
+
+            if (mc.vacancy.currentVacancy == null)
+            {
+                mc.vacancy.currentVacancy = db.vacancy.Where(v => v.id == (vacancyID ?? 6)).FirstOrDefault();
+            }
+
+            return View(mc);
+        }
+        public PartialViewResult NextPage(int? jobseekerPage, MatchCandidatesModel mc)
+        {
+            mc.jobseekers = db.jobseeker.ToList().ToPagedList(jobseekerPage ?? 1, 1);
+            return PartialView("_PartialMatchCandidatesJobSeeker", mc.jobseekers);
+        }
+
+        public PartialViewResult Match(string vacancy, string jobseeker, MatchCandidatesModel mc)
+        {
+
+            //mc.vacancy.matchedJobseekers.Add(jobseeker);
+            return PartialView("MatchCandidates", mc);
+        }
     }
+
 
 
 }

@@ -1,0 +1,118 @@
+﻿@model  JFLatest.Models.MatchCandidatesModel.vacancyModel
+
+<div>
+
+
+    <div class="panel panel-success">
+        <div class="panel panel-heading">
+            <h6 style="text-align:center">Vacancy</h6>
+        </div>
+        <div class="panel panel-body" style="border:none">
+            <div class="col-md-1">
+                <button class="btn btn-primary btn-xs pull-left">prev</button>
+            </div>
+            <div class="col-md-5">
+
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.name, "Vacancy name"):
+                    @Html.DisplayFor(modelItem => Model.currentVacancy.name)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.location, "Location"):
+                    @Html.DisplayFor(modelItem => Model.currentVacancy.location)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.language, "Language"):
+                    @Html.DisplayFor(modelItem => Model.currentVacancy.language)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.salaryMin, "Minimum salary"):
+                    @Html.DisplayFor(modelItem => Model.currentVacancy.salaryMin)
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.race, "Race"):
+                    @Html.DisplayFor(modelItem => Model.currentVacancy.race)
+                </div>
+
+            </div>
+
+            <div class="col-md-5">
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.gender, "Gender"):
+                    @if (@Model.currentVacancy.disability != null)
+                    {
+                        @Html.DisplayFor(modelItem => Model.currentVacancy.gender)
+                    }
+                </div>
+
+                @*Tech Skill area*@
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.vacancytechskill, "Technical  Skills"):
+                    @foreach (JFLatest.vacancytechskill techSkill in Model.currentVacancy.vacancytechskill)
+                    {
+                        @Html.DisplayFor(modelItem => techSkill.skill.name)
+                        @:,
+                    }
+                </div>
+
+                @* Soft Skill area *@
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.vacancytechskill, "Soft Skills"):
+                    @foreach (JFLatest.vacancysoftskill softSkill in Model.currentVacancy.vacancysoftskill)
+                    {
+                        @Html.DisplayFor(modelItem => Model.currentVacancy.vacancysoftskill.First().skill.name)
+                        @:,
+
+                    }
+                </div>
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.driversLicense, "Driver's license required"):
+                    @if (@Model.currentVacancy.driversLicense != null)
+                    {
+                        @Html.DisplayTextFor(modelItem => Model.currentVacancy.driversLicense)
+                    }
+                    else
+                    {
+                        <text>False</text>
+                    }
+                </div>
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.disability, "Disability Required"):
+                    @if (@Model.currentVacancy.disability != null)
+                    {
+                        @Html.DisplayTextFor(modelItem => Model.currentVacancy.disability)
+                    }
+                    else
+                    {
+                        <text>False</text>
+                    }
+                </div>
+
+
+                <div>
+                    @Html.LabelFor(modelItem => Model.currentVacancy.criminalRecord, "Criminal record"):
+                    @if (@Model.currentVacancy.disability != null)
+                    {
+                        @Html.DisplayTextFor(modelItem => Model.currentVacancy.criminalRecord)
+                    }
+                    else
+                    {
+                        <text>False</text>
+                    }
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary btn-xs" style=" align-items: center;">next</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -61,6 +61,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.3\Assemblies\v4.5\MySql.Web.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -261,6 +267,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AdminModels.cs" />
     <Compile Include="Models\EmployerModels.cs" />
     <Compile Include="my_aspnet_applications.cs">
       <DependentUpon>jobfair.tt</DependentUpon>
@@ -351,6 +358,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -505,6 +513,11 @@
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\ViewEmployers.cshtml" />
     <Content Include="Views\Employer\Profile.cshtml" />
+    <Content Include="Views\Admin\MatchCandidates.cshtml" />
+    <Content Include="Views\Admin\_PartialMatchCandidatesVacancy.cshtml" />
+    <Content Include="Views\Admin\_PartialMatchCandidatesJobSeeker.cshtml" />
+    <Content Include="Views\Employer\_PartialEmployerLeftSidebar.cshtml" />
+    <Content Include="Views\Admin\_PartialMatch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

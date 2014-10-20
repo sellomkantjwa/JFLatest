@@ -214,9 +214,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="applicationId" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="254" Nullable="false" />
           <Property Name="isAnonymous" Type="bool" Nullable="false" />
           <Property Name="lastActivityDate" Type="datetime" Precision="0" />
         </EntityType>
@@ -407,7 +407,9 @@ warning 6035: The relationship 'fk_employer_user' has columns that are not part 
 warning 6035: The relationship 'fk_match_employer' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="fk_match_employer" />-->
         <Association Name="fk_match_event">
-          <End Role="event" Type="Self.event" Multiplicity="1" />
+          <End Role="event" Type="Self.event" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="match" Type="Self.match" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="event">
@@ -419,7 +421,9 @@ warning 6035: The relationship 'fk_match_employer' has columns that are not part
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_match_jobseeker">
-          <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="1" />
+          <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="match" Type="Self.match" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="jobseeker">
@@ -430,6 +434,9 @@ warning 6035: The relationship 'fk_match_employer' has columns that are not part
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'fk_myaspnetusers_user' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="fk_myaspnetusers_user" />-->
         <Association Name="fk_owner">
           <End Role="jobseeker" Type="Self.jobseeker" Multiplicity="0..1">
             <OnDelete Action="Cascade" />

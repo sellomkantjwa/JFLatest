@@ -176,9 +176,12 @@ namespace JFLatest.Controllers
             //});
             addVacancyModel.GenderOptions = db.gender.ToList().Select(x => new SelectListItem
             {
-                Value = x.name.ToString(),
+                Value = x.id.ToString(),
                 Text = x.name
             });
+
+
+
             addVacancyModel.RaceOptions = db.race.ToList().Select(x => new SelectListItem
             {
                 Value = x.name.ToString(),
